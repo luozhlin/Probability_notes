@@ -1,0 +1,65 @@
+\section{Probability and counting}
+
+Probability is a logical framework for quantifying uncertainty and randomness in a principled way. 
+
+\subsection{Sample spaces}
+
+The mathematical framework for probability is built around \textit{sets}. For an experiment, a set includes all possible outcomes.
+
+\begin{defn}[Sample space and event]
+    The \textit{sample space} $S$ of an experiment is the set of all possible outcomes of the experiment. An \textit{event} $A$ is a subset of the sample space $S$, and we say that $A$ occurred if the actual outcomes is in $A$.
+\end{defn}
+
+The sample space can be finite, countably infinite, or uncountably. Set theory is very useful in probability, since it provides a rich language for expressing and working with events. Here, we will give some simple theory.
+
+\subsection{Naive definition of probability}
+
+Historically, the earliest definition of the probability of an event was to count the number of ways the event could happen and divide by the total number of possible outcomes for the experiments. We call this the \textit{naive definition} since it is restrictive and relies on strong assumptions.
+
+\begin{defn}[Naive definition of probability]
+    Let $A$ be an event for an experiment with a finite sample space $S$. The \textit{naive probability} of $A$ is 
+    $$
+    P_{\text{naive}}(A) = \frac{|A|}{|S|}
+    $$
+    Where we use $|A|$ denote the size of $A$.
+\end{defn}
+
+The naive definition is very restrictive in that it requires $S$ to be finite, with equal mass for each sample. It is a common mistake that lots people would make.
+
+\subsection{Count}
+
+Calculating the naive probability of an event $A$ involves counting the size of $A$ and $S$. Often the sets we need to count are extremely large. This section introduces some fundamental methods of counting.
+
+\subsubsection{Multiplication rule}
+
+In some problems, we can directly count the number of possibilities using a basic but versatile principle called the \textit{multiplication rule}, which leads naturally to counting rules for \textit{sampling with replacement} and \textit{sampling without replacement}.
+
+\begin{thm}[Multiplication rule]
+    Consider a compound experiment consisting of two sub-experiments, A and B. Suppose that A has $a$ possible outcomes, and for each of those outcomes B has $b$ possible outcomes. Then the compound experiment has $ab$ possible outcomes.
+\end{thm}
+
+\begin{thm}[Sampling with replacement]
+    Consider $n$ objects and making $k$ choices from them, one at a time with replacement. Then there are $n^k$ possible outcomes (where order matters, in the sense that, the outcome would be different if the order is not the same).
+\end{thm}
+
+\begin{thm}[Sampling without replacement]
+    Consider $n$ objects and making $k$ choices from them, one at a time without replacement. Then there are $n(n-1)\cdots(n-k+1)$ possible outcomes for $1\leq k \leq n$, and $0$ possible outcomes for $k>n$ (where order matters).
+\end{thm}
+
+\subsubsection{Adjusting for overcounting}
+
+The order matters above since each object is labeled or different. But in some cases, $n$ objects are unordered, so when we are counting the number of ways to choose $k$ objects out of $n$ without replacement, we could divide by the exactly counting time to get correct count. We call this \textit{adjusting for overcounting}. 
+
+\begin{thm}[Binomial coefficient]
+    For any nonnegative integers $k$ and $n$, the binomial coefficient $\binom{n}{k}$, read as "$n$ choose $k$", is the number of subsets of size $k$ for a set of size $n$.  
+\end{thm}
+
+\begin{defn}[Binomial coefficient formula]
+    For $k\leq n$, we have
+    $$
+    \binom{n}{k} = \frac{n(n-1)\cdots(n-k+1)}{k!} = \frac{n!}{(n-k!)k!}
+    $$
+    For $k>n$, we have $\binom{n}{k}=0$.  
+\end{defn}
+
+Notably, there are some useful properties that could be used in calculation.
