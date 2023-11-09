@@ -1,16 +1,143 @@
-\section{Probability and counting}
+\section{Event and probability}
 
-Probability is a logical framework for quantifying uncertainty and randomness in a principled way. 
+\subsection{Random phenomenon and statistical regularity}
 
-\subsection{Sample spaces}
+\subsubsection{Random phenomenon}
 
-The mathematical framework for probability is built around \textit{sets}. For an experiment, a set includes all possible outcomes.
+Probability theory is a branch of mathematics to study the quantitative law of random phenomenon. Let's first explain what random phenomenon is.
 
+Originally, there are two different kinds of phenomena in nature and society. Lots of things would happen in some certain conditions. For example, without the external force, a stuff moving in a straight line in a constant speed would continue moving in the speed straightly. Or in our life, when water is heated to 100 degrees Celsius, it would inevitably boil. These things that must occur in a certain condition are called certain events. Vice versa, those could not happen are called impossible events. Both phenomena are called decisive phenomena.
+
+However, there is another phenomenon that are fundamentally different from decisive phenomena. For instance, when measuring weight of the same object, the results are always slightly different from each other. The reason for it is that the air pressure or variation in observers' physiological and psychological changes. In other words, a series of tests or observations would obtain different results and it presents a contingency. This phenomenon is called random phenomenon. For random phenomenon, we usually focus on whether a outcome appears in the test or observation, and this result are random event, simply called event. In the future, we usually use $A,B,C$ to present random events.
+
+\subsubsection{Frequency stability}
+
+Seemingly, it is that contingency is at work, but the contingency is always governed by hidden laws. The problem is to find these laws.
+
+Although some events can occur or not in a test, it shows a obvious regularity, frequency stability, in a large number of tests.
+
+For an event $A$, if it occurs $n$ times in $N$ tests, then it is called
+\begin{align*}
+    F_N(A)=\frac{n}{N}
+\end{align*}
+the \textbf{frequency} of random event A in $N$ trials.
+
+A common instance is tossing a coin. If we suppose the coin is even, the frequency of positive in a large number of trials should be approximately $50\%$. To prove it, many people in history made this test.
+
+Random phenomenon has its contingency side and its inevitability side, which is manifested by the stability of the frequency of random events in a large number of experiments, that is, the frequency often swings around a fixed constant, and this regularity is called \textbf{statistical regularity}. The stability of frequency indicates that the probability of random events is an objective property, which is inherent and does not change with people's will, so it can be measured.
+
+For a random event $A$, a number $P(A)$ is used to represent the occurrence possibility of the event, and it called the \textbf{probability} of random event $A$. So probability measures the possibility of a random event occurring.
+
+\subsubsection{Frequency and probability}
+The frequency has some properties
+\begin{enumerate}
+    \item (non-negative)
+    \begin{align}
+        F_N(A) \geq 0
+    \end{align}
+    \item Set $\Omega$ as certain event, that occurs $N$ times in $N$ trials, then
+    \begin{align}
+        F_N(\Omega) =1
+    \end{align}
+    \item  (additivity) Suppose $A$ and $B$ are two events which do not happen at the same time and $A+B$ indicates the event where at least $A$ or $B$ would happen, then
+    \begin{align}
+        F_N(A+B) =F_N(A) +F_N(B)
+    \end{align}
+\end{enumerate}
+
+Finally, from the above discussion of frequency stability, it seems possible to conjecture that $F_N(A)$ and $P(A)$ should be sufficiently close when $N$ is large enough. We shall see that under very general conditions it is true, but that the conditions of the problem needs to be further clarified. Usually, when $N$ is large enough, frequency is utilized as an approximation of the probability.
+
+
+\subsection{Sample space and event}
+
+\subsubsection{Sample space}
+
+Sample space and event are two most basic concepts. The study to random phenomenon is certainly related to investigation, observations, experiments to objective things. In the future, all these are called \textbf{trial}, and suppose it can be repeated in the same condition.
+
+We are really interested in the outcome of trials. In order to study random trials, we first need to know all possible outcomes in this trial. We call this outcomes as \textbf{sample pints}, generally denoted by $\omega$. All outcomes compose a set, called \textbf{sample space}, denoted by $\Omega$. In practice, determine the sample space is the first step to describe the random phenomena.
+
+\subsubsection{Event}
+
+Given a \textbf{set} $S$ of a point, it indicates that for any point $\omega$, we can determine whether it belongs to $S$. If so, denoted as $\omega \in S$. Otherwise, denoted as $\omega \notin S$. In terms of this definition, a single point is also a set. Customarily, a set without any point is also a set, called empty set, denoted as $\varnothing$.
+
+We define an event as some set of sample point, and say an event occurs if and only if a sample point of the set appears.
+The following definition is mathematical definition of sample space and event.
 \begin{defn}[Sample space and event]
     The \textit{sample space} $S$ of an experiment is the set of all possible outcomes of the experiment. An \textit{event} $A$ is a subset of the sample space $S$, and we say that $A$ occurred if the actual outcomes is in $A$.
 \end{defn}
+The sample space can be finite, countably infinite, or uncountably. 
 
-The sample space can be finite, countably infinite, or uncountably. Set theory is very useful in probability, since it provides a rich language for expressing and working with events. Here, we will give some simple theory.
+We see sample space $\Omega$ as an event, too. And call it as certain event. Similarly, empty set $\varnothing$ is also an event, called impossible event.
+
+\subsubsection{Operation of events}
+
+Set theory is very useful in probability, since it provides a rich language for expressing and working with events. Here, we will give some simple theory.
+
+First, we discuss the relationship between two events $A$ and $B$.
+
+If all sample points in $A$ are included in $B$, it is denoted as $A \subset B$ or $B \supset A$, said that $A$ is included in $B$ or $B$ contains $A$. In this case, the occurrence of $A$ must lead to the occurrence of $B$.
+
+If $A\subset B$ and $B\subset A$ are both true, it is said that $A$ equals to $B$ or $A$ is equivalent to $B$. The two events would happen at the same time.
+
+For event $A$, the event composed of all sample points not in A is called inverse event or \textbf{opposite event} of $A$, denoted as $\bar{A}$. It means $A$ does not occur.
+
+Second, for event $A$ and $B$, define two new events:
+\begin{itemize}
+    \item $A \cap B$ or $AB$ represents the set whose points in $A$ and $B$ at the same time, called the \textbf{intersection} of $A$ and $B$. $A$ and $B$ would occur in the meantime.
+    \item $A \cup B$ represents the set whose points at least in one of $A$ or $B$, called the \textbf{union} of $A$ and $B$. It indicates that at least one of $A$ and $B$ would happen.
+    \item If $AB=\varnothing$, it represents $A$ and $B$ cannot happen at the same time, called $A$ and $B$ are \textbf{mutual exclusive}. In this note, we denote their union as $A+B$
+    \item  $A-B$ represents the set whose points in $A$ but not in $B$, called the difference of $A$ and $B$. It indicates $A$ happen but $B$ does not happen.
+    \item For opposite event, we have $A \cup \bar{A} = \Omega$, $A \cap \bar{A}= \varnothing$, which can be the definition of opposite event. Obviously, $\bar{A}=\Omega-A$.
+    \item (De Morgan or Duality Theorem) 
+    \begin{align*}
+        \bar{A\cup B} = \bar{A} \cap \bar{B}, \quad \bar{A\cap B} = \bar{A} \cup \bar{B}
+    \end{align*}
+    You can try use it to re-define the union and intersection.
+\end{itemize}
+Remarkably, it is not difficult to generalize the above definition to multiple event situations.
+
+For example, with respect to $n$ events $A_1,A_2,\cdots,A_n$, use $A_1\cup A_2 \cup \cdots \cup A_n$ or $\cup_{i=1}^n A_i$ denote at least one of $A_1,A_2,\cdots,A_n$ occurs, called the union of $A_1,A_2,\cdots,A_n$. Especially, when $A_1,A_2,\cdots,A_n$ are mutual exclusive, it is called summation, denoted as $A_1 + A_2 +\cdots +A_n$ or $\sum_{i=1}^n A_i$. Correspondingly, use $A_1 A_2\cdots A_n$ or $\cap_{i=1}^n A_i$ represents $A_1,A_2,\cdots,A_n$ happen at the same time.
+
+In this case, De Morgan still holds,
+\begin{align*}
+    \overline{\bigcup_{i=1}^n A_i} = \bigcap_{i=1}^n \bar{A}_i, \quad \overline{\bigcap_{i=1}^n A_i} = \bigcup_{i=1}^n \bar{A}_i
+\end{align*}
+For countably infinite, we define
+\begin{align*}
+    \bigcup_{i=1}^\infty A_i = \lim_{n\to \infty} \bigcup_{i=1}^n A_i, \quad \bigcap_{i=1}^\infty A_i =\lim_{n\to \infty} \bigcap_{i=1}^n A_i
+\end{align*}
+In this case, De Morgan theory is still true.
+
+We can show that the operation of events satisfy some laws as following,
+\begin{enumerate}
+    \item (commutative law) $A\cup B = B \cup A$, $AB=BA$
+    \item (associative law) $(A\cup B) \cup C = A \cup (B \cup C)$, $(AB)C=A(BC)$
+    \item (distributive law) $(A\cup B) \cap C = AC \cup BC$, $(A\cap B) \cup C = (A\cup C) \cap (B\cup C)$
+\end{enumerate}
+Prove it by yourself.
+
+If you familiar with set theory, you can find them totally identical. Hence, you should explain these operations in probability and use it to represent various events.
+
+
+\subsubsection{Finite sample space}
+
+To begin with, we only consider the sample space with finite sample points, called \textbf{finite sample space}. It's the simplest sample space and it is helpful to further study more complex sample spaces.
+
+If $\Omega$ is a finite sample space, whose sample points are $\omega_1,\omega_2,\cdots, \omega_n$. Any subset of $\Omega$ can be seen as an event, so a single point as a point set can be an event. To introduce the probability in this sample space, it only need to assign a number to each point, called probability of $\omega_i$ and denoted as $P(\omega_i)$. It is non-negative and satisfies
+$$
+P(\omega_1) +P(\omega_2)+\cdots + P(\omega_n) =1
+$$
+Therefore, we define the probability of each sample point, measuring the possibility of occurrence of each point. In terms of it, we can define the probability of general events.
+\begin{defn}
+    Any probability $P(A)$ of event $A$ is the sum of probability of each point.
+\end{defn}
+It is obvious that $P(\Omega)=1, 0\leq P(A) \leq 1$.
+
+It is easy to generalize the definition to countably sample space, which called \textbf{discrete sample space}.
+
+\subsection{Classical probabilistic models}
+
+\subsubsection{Model and formulation}
 
 \subsection{Naive definition of probability}
 

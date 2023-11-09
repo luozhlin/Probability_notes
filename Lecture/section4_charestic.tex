@@ -1,0 +1,143 @@
+\section{Expectation and characteristic function}
+
+\subsection{Expectation}
+
+\subsubsection{Mean and weighted mean}
+
+Some distribution can describe a random variable completely, but cannot reflect its variation. Thus it is necessary to find some quantity to describe the random variables more centrally and generally. The most used is mean (average). The basic mean is calculated by
+\begin{align*}
+    \bar{x} = \frac{x_1 +x_2+\cdots + x_n}{n}
+\end{align*}
+However, in some situations, different observations make different contributions to the mean, in this case, we can use weighted mean.
+\begin{defn}[weighted mean]
+    Given weight $w_i \geq 0,i=1,2,\cdots,n$ with $\sum_{i=1}^n w_i=1$, then
+    \begin{align}
+        \bar{x}_w = \sum_{i=1}^n w_ix_i
+    \end{align}
+    named as weighted mean of $x_1,\cdots,x_n$ with weight $\{w_i,i=1,2,\cdots,n\}$.
+\end{defn}
+
+Mean is always in the middle of original data, thus it reflects the central tendency of a set of data.
+
+\subsubsection{Discrete situation}
+For general discrete random variables, we can introduce such definition as following.
+\begin{defn}
+    Set $\xi$ as a discrete random variable, and the probability corresponding to its value $x_1,x_2,x_3,\cdots$ are $p_1,p_2,p_3,\cdots$. If series
+    \begin{align}
+        \sum_{i=1}^\infty x_ip_i
+    \end{align}
+    absolute converges, then it can be called the \textbf{mathematical expectation} of $\xi$, simplified as \textbf{expectation} or \textbf{mean}.
+    When $\sum_{i=1}^\infty |x_i|p_i$ diverges, then the expectation of $xi$ does not exist.
+\end{defn}
+
+\begin{exa}[Bernoulli distribution]
+    The probability of $A$ occurring is $p$, and let $I_A$ as the indicator function. Namely, it equals to 1 when A occurs, otherwise equals to 0, then
+    \begin{align*}
+        E I_A &= 1 \times p + 0 \times (1-p)\\
+        &= p = P(A)
+    \end{align*}
+    So probability is the expectation of random variable $I_A$. From this point, probability is a special case of expectation.
+\end{exa}
+
+\begin{exa}[Binomial distribution]
+$p_k=\binom{n}{k}p^kq^{n-k},k=0,1,2,\cdots,n$, 
+and its expectation is
+\begin{align}
+    \sum_{k=0}^n kp_k &= \sum_{k=1}^n k \binom{n}{k}p^kq^{n-k} \nonumber\\
+    &= np\sum_{k=1}^n \binom{n-1}{k-1}p^{k-1}q^{n-k} \nonumber\\
+    &= np (p+q)^{n-1}=np
+\end{align}
+\end{exa}
+
+\begin{exa}[Poisson distribution] $p_k=\frac{\lambda^k}{k!}{\rm e}^{-\lambda},k=0,1,2,\cdots$.
+\begin{align}
+\sum_{k=0}^\infty kp_k &= \sum_{k=1}^\infty k\frac{\lambda^k}{k!} {\rm e}^{-\lambda} =\lambda {\rm e}^{-\lambda}\sum_{k=1}^\infty\frac{\lambda^{k-1}}{(k-1)!} \nonumber\\
+&=\lambda {\rm e}^{-\lambda} \cdot {\rm e}^{\lambda} =\lambda 
+\end{align}
+\end{exa}
+
+\begin{exa}[Geometric distribution]
+$p_k=q^{k-1}p,k=1,2,\cdots$
+\begin{align}
+    \sum_{k=1}^\infty kp_k &= \sum_{k=1}^\infty kq^{k-1}p=p(1+2q+3q^2+\cdots) \nonumber\\
+    &=p(q+q^2+q^3+\cdots)' = p(\frac{q}{1-q})'\nonumber\\
+    &=p \frac{1}{(1-q)^2} = \frac{1}{p}
+\end{align}
+\end{exa}
+
+\begin{exa}
+    Random variable $\xi$ has value $x_k=(-1)^k \frac{2^k}{k},k=1,2,\cdots$ and its corresponding probability is $p_k=\frac{1}{2^k}$. Since $p^k\geq 0$, $\sum_{k=1}^\infty p_k =1$, it is probability distribution and
+    \begin{align*}
+        \sum_{k=1}^\infty x_kp_k = \sum_{k=1}^\infty (-1)^k \frac{1}{k} = - \log 2
+    \end{align*}
+    But because 
+    \begin{align*}
+        \sum_{k=1}^\infty |x_k|p_k =  \sum_{k=1}^\infty \frac{1}{k} = \infty
+    \end{align*}
+    The expectation of $\xi$ does not exist.
+\end{exa}
+
+\subsubsection{Continuous situation}
+
+Suppose random variable $\xi$ has density function $p(x)$. Choose dense points $x_0<x_1<x_2<\cdots<x_n$, and the probability of $\xi$ in $[x_i,x_{i+1}]$ approximately equals to $p(x_i)(x_{i+1}-x_i)$. Hence, $\xi$ is equivalent to the discrete random variable which has value $x_i$ with probability $p(x_i)(x_{i+1}-x_i)$ and its expectation is
+\begin{align*}
+    \sum_i x_i p(x_i)(x_{i+1}-x_i)
+\end{align*}
+The above formula is the asymptotic sum of integral $\int_{-\infty}^\infty xp(x) {\rm d} x$.
+
+\begin{defn}
+    Set continuous random variable $\xi$ with density function $p(x)$. When integral $\int_{-\infty}^\infty xp(x) {\rm d} x$ absolutely converges, it is called \bf{expectation} (\bf{mean}) of $\xi$, denoted as $E\xi$, that is
+    \begin{align}
+        E\xi = \int_{-\infty}^\infty xp(x) {\rm d} x
+    \end{align}
+\end{defn}
+
+\begin{exa}[Normal distribution $N(\mu,\sigma^2)$]
+    \begin{align}
+        \int_{-\infty}^\infty xp(x) {\rm d} x &= \int_{-\infty}^\infty x \frac{1}{\sqrt{2\pi}\sigma} {\rm e}^{-(x-\mu)^2/(2\sigma^2)} {\rm d} x \nonumber \\
+        &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty (\sigma z +\mu) {\rm e}^{-z^2/2} {\rm d}z\nonumber\\
+        &= \frac{\mu}{\sqrt{2\pi}} \int_{-\infty}^\infty {\rm e}^{-z^2/2} {\rm d}z =\mu
+    \end{align}
+\end{exa}
+
+\begin{exa}[Exponential distribution]
+$p(x)=\lambda {\rm e}^{-\lambda x}, x\geq 0$.
+\begin{align}
+    \int_{0}^\infty x \lambda {\rm e}^{-\lambda x} {\rm d} x = -\int_{0}^\infty x {\rm d} {\rm e}^{-\lambda x} = \int_{0}^\infty {\rm e}^{-\lambda x} {\rm d} x = \frac{1}{\lambda}
+\end{align}
+\end{exa}
+
+\begin{exa}[Cauchy distribution]
+    $p(x)=\frac{1}{\pi}\cdot \frac{1}{1+x^2}$
+    \begin{align*}
+        \int_{-\infty}^\infty |x| \cdot \frac{1}{\pi(1+x^2){\rm d} x } = \infty
+    \end{align*}
+    
+    So its expectation does not exist.
+\end{exa}
+
+\subsubsection{General situation}
+
+We have defined expectation of discrete and continuous random variables, so, naturally, we hope to find a definition that can be applied to all kinds of random variables. To attain this, we need Stieltjes integral. 
+
+If the distribution function of random variable $\xi$ is $F(x)$, similarly in continuous variables, take dense points $x_0<x_1<\cdots<x_n$, then the probability of $\xi$ in $[x_i,x_{i+1}]$ is $F(x_{i+1})-F(x_i)$. Hence, $\xi$ is equivalent to the discrete random variable which has value $x_i$ with probability $F(x_{i+1})-F(x_i)$ and its expectation is
+\begin{align*}
+    \sum_i x_i (F(x_{i+1})-F(x_i))
+\end{align*}
+The above formula is the asymptotic sum of Stieltjes integral $\int_{-\infty}^\infty x {\rm d} F(x)$.
+
+\begin{defn}
+    If random variable $\xi$ has distribution function $F(x)$, then define
+    \begin{align}
+        E\xi = \int_{-\infty}^\infty x {\rm d}  F(x)
+    \end{align}
+    as {\bf expectation (mean)} of $\xi$. Where the integral should absolutely converges, otherwise, the expectation does not exist.
+\end{defn}
+
+Some properties of Stieltjes integral,
+\begin{align}
+    I = \int_{-\infty}^\infty g(x) {\rm d} F(x)
+\end{align}
+\begin{enumerate}
+    \item 
+\end{enumerate}
